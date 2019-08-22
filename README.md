@@ -5,7 +5,7 @@ I want to get a Popup Widget to be shown when clicking on a QToolbutton.
 This can be done by adding an action to the button itself.
 The popup will contain a three buttons (update, create and cancel) and a text input field.
 
-I have some sample code with only one button I have shared as a [Github repository]().
+I have some sample code with only one button I have shared as a [Github repository](https://github.com/aoloe/cpp-qt-playground-button-popup).
 
 The most relevant part of the code is:
 
