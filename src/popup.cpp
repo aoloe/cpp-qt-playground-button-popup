@@ -1,36 +1,16 @@
 #include "popup.h"
 
-#include<QToolButton>
 #include<QWidget>
-#include<QEvent>
 #include<QVBoxLayout>
 #include<QPushButton>
 
-Popup::Popup(QToolButton* button, QWidget* parent)
-    : QWidget(parent), clickedButton{button}
+Popup::Popup(QWidget* parent)
+    : QWidget(parent)
 {
     auto layout = new QVBoxLayout(this);
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->addStretch();
-    auto updateButton = new QPushButton("Update", this);
+    auto updateButton = new QPushButton("Update");
     layout->addWidget(updateButton);
-    setLayout(layout);
-
-    connect(updateButton, &QPushButton::clicked, this, &Popup::doUpdate);
-
+    connect(updateButton, &QPushButton::clicked, this, &Popup::clicked);
 }
-
-
-void Popup::showEvent(QShowEvent*)
-{
-    // QPoint p = this->pos();
-    // QRect geo = clickedButton->geometry();
-	// 
-    // this->move(p.x()+geo.width()-this->geometry().width(), p.y());
-}
-
-void Popup::doUpdate()
-{
-    // close();
-    // emit leaveEvent(new QEvent(QEvent::Leave));
-}
-

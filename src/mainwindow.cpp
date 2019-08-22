@@ -7,22 +7,25 @@
 
 MainWindow::MainWindow()
 {
-    auto widget = new QWidget(this);
+    auto widget = new QWidget;
+    setCentralWidget(widget);
     auto layout = new QHBoxLayout(widget);
     layout->addStretch();
-    auto button = new QToolButton(this);
+
+    auto button = new QToolButton;
     button->setText(" AA ");
     layout->addWidget(button);
-    widget->setLayout(layout);
-    setCentralWidget(widget);
 
-    connect(button, &QToolButton::clicked, this, &MainWindow::showPopup);
-
-	auto popup = new Popup(button, this);
+	auto popup = new Popup;
 	auto popupAction = new QWidgetAction(this);
 	popupAction->setDefaultWidget(popup);
 	button->setPopupMode(QToolButton::InstantPopup);
 	button->addAction(popupAction);
+    
+    connect(popup, &Popup::clicked, [popup](){
+        if(QWidget *p = popup->parentWidget())
+            p->close();
+    });
 }
 
 void MainWindow::showPopup()

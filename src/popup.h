@@ -9,12 +9,9 @@ class Popup : public QWidget
 {
     Q_OBJECT
 public:
-    explicit Popup(QToolButton* button, QWidget* parent);
-private:
-    void showEvent(QShowEvent*);
-    QToolButton* clickedButton;
-private slots:
-    void doUpdate();
+    explicit Popup(QWidget* parent=nullptr);
+Q_SIGNALS:
+	void clicked();
 };
 #endif
 
